@@ -1,0 +1,80 @@
+  /* Estilos personalizados */
+  body {
+      font-family: Arial, sans-serif;
+      background-color: #f8f9fa;
+      margin: 0;
+      padding: 0;
+  }
+
+  /* Header */
+  .header {
+      background-color: #e0e0e06c;
+      padding: 10px 10px;
+      color: #fff;
+  }
+
+  .container {
+
+      margin-left: 0px;
+      margin-right: 0px;
+  }
+
+  .logo {
+      height: 48px;
+  }
+
+  .header_text {
+      color: black
+  }
+
+  .header_text:hover {
+      color: rgba(0, 0, 255, 0.5);
+  }
+
+  /* Contenido principal */
+  .main-content {
+      padding: 20px;
+  }
+
+  /* Nav lateral */
+  .sidebar {
+      position: fixed;
+      left: 0;
+      top: 80px;
+      /* Altura del header */
+      width: 200px;
+      height: calc(100vh - 80px);
+      background-color: white;
+      border-right: 1px solid #ddd;
+      padding: 20px;
+  }
+
+  .sidebar h4 {
+      margin-bottom: 20px;
+  }
+
+  .nav-item {
+      padding: 10px 0;
+  }
+
+  ion-icon {
+      font-size: 24px;
+      color: black;
+  }
+
+  .sidebar ul li:hover {
+      color: rgba(0, 0, 255, 0.5);
+  }
+
+  .sidebar ul li a {
+      text-decoration: none;
+      color: black
+  }
+
+  .sidebar ul li a:hover {
+      color: rgba(0, 0, 255, 0.5);
+  }
+
+  .sidebar ul li a ion-icon:hover {
+      color: rgba(0, 0, 255, 0.5);
+  }

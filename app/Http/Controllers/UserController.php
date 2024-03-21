@@ -9,6 +9,14 @@ class UserController extends Controller
 {
 
     /**
+     * Display user profile
+     */
+    public function show_profile()
+    {
+        $user = auth()->user();
+        return view('pages/header/user_profile', compact('user'));
+    }
+    /**
      * Display a listing of the resource.
      */
     public function index()
