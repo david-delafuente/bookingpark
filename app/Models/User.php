@@ -47,6 +47,8 @@ class User extends Authenticatable
         ];
     }
 
+    //Realtions
+
     public function vehicles(): HasMany
     {
         return $this->hasMany(Vehicle::class);
@@ -55,5 +57,15 @@ class User extends Authenticatable
     public function membership(): BelongsTo
     {
         return $this->belongsTo(Membership::class);
+    }
+
+    public function bookings(): HasMany
+    {
+        return $this->hasMany(Booking::class);
+    }
+
+    public function bookings_last_mile(): HasMany
+    {
+        return $this->hasMany(Booking_last_mile::class);
     }
 }

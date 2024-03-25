@@ -26,6 +26,10 @@ Route::middleware('auth')->group(function () {
     //become to Premium
     Route::view('/joinus', 'pages/nav/joinus')->name('joinus');
     Route::post('/joinus', [MembershipController::class, 'edit']);
+    //booking by day
+
+    //booking by hours
+
     //logout
     Route::get('/logout', [LogoutController::class, 'destroy'])->name('logout');
     Route::post('/logout', [LogoutController::class, 'destroy'])->name('logout');
