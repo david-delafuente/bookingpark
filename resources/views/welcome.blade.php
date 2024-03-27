@@ -41,45 +41,79 @@
 
     </div>
 
-    <!-- Contenido principal -->
-    <div class="main-content">
-        <div class="container">
-            <div class="row">
-                <!-- Nav lateral -->
-                <div class="col-md-3">
-                    <div class="sidebar">
-                        <!-- Menú desplegable -->
-                        <ul class="nav flex-column">
-                            <li class="nav-item"><a href="{{ route('welcome') }}">Inicio</a></li>
-                            <li class="dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false">
-                                Reservas
-                            </li>
-                            <ul class="dropdown-menu dropdown-menu">
-                                <li><a class="dropdown-item" href="#">Día entero</a></li>
-                                <li><a class="dropdown-item" href="#">Por horas</a></li>
-                            </ul>
-                            <li class="nav-item"><a href="{{ route('joinus') }}">Hazte socio</a></li>
-
+    <div class="main-content row">
+        <!-- Nav lateral (Sidecar) -->
+        <div class="col-md-3">
+            <div class="sidebar">
+                <!-- Menú desplegable -->
+                <ul class="nav flex-column">
+                    <li class="nav-item"><a href="{{ route('welcome') }}">Inicio</a></li>
+                    <li class="dropdown">
+                        <a class="dropdown-toggle" href="#" role="button" id="dropdownMenuLink"
+                            data-bs-toggle="dropdown" aria-expanded="false">
+                            Reservas
+                        </a>
+                        <ul class="dropdown-menu" aria-labelledby="dropdownMenuLink">
+                            <li><a class="dropdown-item" href="{{ route('bookings_day') }}">Día entero</a></li>
+                            <li><a class="dropdown-item" href="{{ route('bookings_hour') }}">Por horas</a></li>
                         </ul>
-                    </div>
-                </div>
-                <!-- Contenido principal -->
-                <div class="col-md-9">
-                    <!-- Aquí va el contenido principal -->
-                    <h2>Reserva por horas</h2>
-                </div>
+                    </li>
+                    <li class="nav-item"><a href="{{ route('joinus') }}">Hazte socio</a></li>
+                </ul>
             </div>
         </div>
+        <!-- Contenido principal -->
+        <div class="col-md-9">
+            @include('partials.message')
 
+            <!-- row 1 -->
+            <div class=" row1 img_text">
+                <div class="item1">
+                    <img class="image_home" src="{{ asset('images/home.jpg') }}" alt="">
+                </div>
+                <div class="item2">
+                    <h4>Tu reserva de plazas de aparcamiento de confianza</h4>
+                    <br>
+                    <p>Localiza el parking que más te convenga entre los más de 200 disponibles en nuestra red en la
+                        ciudad condal.</p>
+
+                </div>
+            </div>
+
+            <!-- row 2 -->
+            <div class="img_text">
+                <div class="item2">
+                    <h4>Y si lo necesitas, siendo miembro premium tendrás acceso a una bicicleta o patinete eléctricos,
+                        para tu desplazamiento final</h4>
+                    <br>
+                    <p>Pregunta la disponibilidad en tu local favorito.</p>
+                </div>
+                <div class="item1">
+                    <img class="image_home" src="{{ asset('images/home2.jpg') }}" alt="">
+                </div>
+            </div>
+
+            <!-- row 3 -->
+            <div class="img_text">
+                <div class="item1">
+                    <img class="image_home" src="{{ asset('images/home3.jpg') }}" alt="">
+                </div>
+                <div class="item2">
+                    <h4>¡Tan solo a 1 click!</h4>
+                    <br>
+                    <p>Sencillo y rápido, nunca ha sido tan fácil.</p>
+                </div>
+            </div>
+
+
+
+        </div>
     </div>
 
-    <div class = "container text-center">
-        <input type="text" id="datePicker" name="fecha1" placeholder="Entrada">
-        <input type="text" id="datePicker" name="fecha2" placeholder="Salida">
-        <button class="btn btn-primary">Reservar</button>
-    </div>
 
 
+    <!--Javascript for Flash Messages-->
+    <script src="{{ asset('js/flash_message.js') }}"></script>
     <!-- JavaScript opcional (para funcionalidades adicionales) -->
     <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.8/dist/umd/popper.min.js"
         integrity="sha384-I7E8VVD/ismYTF4hNIPjVp/Zjvgyol6VFvRkX/vR+Vc4jQkC+hVqc2pM8ODewa9r" crossorigin="anonymous">

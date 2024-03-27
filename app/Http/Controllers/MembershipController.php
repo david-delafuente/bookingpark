@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\User;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 
 class MembershipController extends Controller
 {
@@ -49,32 +50,40 @@ class MembershipController extends Controller
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request)
+    public function premium(Request $request)
     {
         /* 
         Validation
         */
         $request->validate([
-            'email' => 'required|email|unique:users'
+            'email' => 'required|email'
         ]);
 
         /*
         Database Edit
         */
+
         $user = User::where('email', $request->email)->first();
+        $email = $request->input('email');
 
-        // Verificar si se encontró al usuario
         if ($user) {
-            // Actualizar el membership_id del usuario de 1 a 2
-            $user->update(['membership_id' => 2]);
-            return redirect('login');
-
-            // Redirigir o devolver una respuesta según sea necesario
-            return redirect()->route('success_page')->with('success', 'El membership_id se actualizó correctamente.');
+            if ($user->membership_id === 1) {
+                DB::update('UPDATE users SET membership_id = 2 WHERE email = ?', [$email]);
+                return redirect()->route('welcome')->with('success', 'Membresía cambiada a Premium.');
+            } else {
+                return redirect()->route('welcome')->with('danger', 'Ya eres miembro Premium, ¿no lo recuerdas?');
+            }
         } else {
-            // Si el usuario no existe, puedes manejarlo como desees
-            return redirect()->route('error_page')->with('error', 'El usuario no existe.');
+            return redirect()->route('welcome')->with('danger', 'No se ha encontrado ningún usuario con el email indicado.');
         }
+
+
+
+        /*      if ($rowsAffected > 0) {
+            return redirect()->route('welcome')->with('success', 'Membresía cambiada a Premium.');
+        } else {
+            return redirect()->route('welcome')->with('danger', 'No se ha encontrado ningún usuario con el email indicado.');
+        } */
     }
 
     /**

@@ -8,7 +8,7 @@ use App\Http\Controllers\Auth\LoginController;
 use Illuminate\Support\Facades\Route;
 
 //HOME
-Route::view('/', 'home')->name('home');
+Route::view('/', 'index')->name('index');
 
 //user registration and login
 Route::get('/register', [RegisterController::class, 'index'])->name('register');
@@ -25,11 +25,11 @@ Route::middleware('auth')->group(function () {
     Route::get('/profile', [UserController::class, 'show_profile'])->name('profile');
     //become to Premium
     Route::view('/joinus', 'pages/nav/joinus')->name('joinus');
-    Route::post('/joinus', [MembershipController::class, 'edit']);
+    Route::post('/joinus', [MembershipController::class, 'premium']);
     //booking by day
-
+    Route::view('bookings_day', 'pages.nav.bookings_day')->name('bookings_day');
     //booking by hours
-
+    Route::view('bookings_hour', 'pages.nav.bookings_hour')->name('bookings_hour');
     //logout
     Route::get('/logout', [LogoutController::class, 'destroy'])->name('logout');
     Route::post('/logout', [LogoutController::class, 'destroy'])->name('logout');

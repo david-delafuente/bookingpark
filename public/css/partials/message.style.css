@@ -1,0 +1,16 @@
+.flash-message {
+    padding: 15px;
+    width: 100%;
+    margin: auto;
+    text-align: center;
+}
+
+.success-message {
+    background-color: green;
+    color: white;
+}
+
+.danger-message {
+    background-color: red;
+    color: white;
+}

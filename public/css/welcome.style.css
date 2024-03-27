@@ -8,15 +8,11 @@
 
   /* Header */
   .header {
+      width: 100%;
       background-color: #e0e0e06c;
       padding: 10px 10px;
       color: #fff;
-  }
-
-  .container {
-
-      margin-left: 0px;
-      margin-right: 0px;
+      position: fixed;
   }
 
   .logo {
@@ -34,6 +30,35 @@
   /* Contenido principal */
   .main-content {
       padding: 20px;
+  }
+
+  .img_text {
+      width: 1000px;
+      display: flex;
+      align-items: center;
+  }
+
+  .row1 {
+      margin-top: 75px;
+  }
+
+  .item1 {
+      width: 40%;
+  }
+
+  .item1 img {
+      width: 100%;
+      border-radius: 10px;
+  }
+
+  .item2 {
+      padding: 25px;
+      width: 40%;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      text-align: center;
   }
 
   /* Nav lateral */
