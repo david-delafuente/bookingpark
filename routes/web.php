@@ -26,6 +26,8 @@ Route::middleware('auth')->group(function () {
     //become to Premium
     Route::view('/joinus', 'pages/nav/joinus')->name('joinus');
     Route::post('/joinus', [MembershipController::class, 'premium']);
+    //Come back to Basic
+    Route::get('/comeBackBasic', [MembershipController::class, 'basic'])->name('membership_cancel');
     //booking by day
     Route::view('bookings_day', 'pages.nav.bookings_day')->name('bookings_day');
     //booking by hours

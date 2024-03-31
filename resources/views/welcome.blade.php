@@ -4,11 +4,13 @@
 @section('content')
     <div class="main-content">
         <!-- Contenido principal -->
-        <div class="">
+
+        <div class="welcome_container">
             @include('layouts.partials.message')
 
             <!-- row 1 -->
             <div class=" row1 img_text">
+
                 <div class="item1">
                     <img class="image_home" src="{{ asset('images/home.jpg') }}" alt="">
                 </div>
@@ -45,6 +47,7 @@
                     <p>Sencillo y rápido, nunca ha sido tan fácil.</p>
                 </div>
             </div>
+
         </div>
     </div>
     <script>
