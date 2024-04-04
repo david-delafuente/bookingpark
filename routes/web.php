@@ -5,6 +5,8 @@ use App\Http\Controllers\MembershipController;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\Auth\RegisterController;
 use App\Http\Controllers\Auth\LoginController;
+use App\Http\Controllers\DistrictController;
+use App\Http\Controllers\ParkingController;
 use Illuminate\Support\Facades\Route;
 
 //HOME
@@ -28,8 +30,18 @@ Route::middleware('auth')->group(function () {
     Route::post('/joinus', [MembershipController::class, 'premium']);
     //Come back to Basic
     Route::get('/comeBackBasic', [MembershipController::class, 'basic'])->name('membership_cancel');
+
     //booking by day
-    Route::view('bookings_day', 'pages.nav.bookings_day')->name('bookings_day');
+    Route::get('/bookings_day', [DistrictController::class, 'index'])->name('booking_day.index');
+    //show parkins by district
+    Route::post('/show_parkings', [DistrictController::class, 'show'])->name('show_parkings');
+    //show parking selected
+    Route::post('/show_parking_data', [ParkingController::class, 'show'])->name('show_parking_data');
+
+
+
+
+
     //booking by hours
     Route::view('bookings_hour', 'pages.nav.bookings_hour')->name('bookings_hour');
     //logout

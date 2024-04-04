@@ -12,7 +12,7 @@
                       Reservas
                   </a>
                   <ul class="dropdown-menu" aria-labelledby="dropdownMenuLink">
-                      <li><a class="dropdown-item" href="{{ route('bookings_day') }}">Día entero</a></li>
+                      <li><a class="dropdown-item" href="{{ route('booking_day.index') }}">Día entero</a></li>
                       <li><a class="dropdown-item" href="{{ route('bookings_hour') }}">Por horas</a></li>
                   </ul>
               </li>

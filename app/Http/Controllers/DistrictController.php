@@ -2,6 +2,8 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\District;
+use App\Models\Parking;
 use Illuminate\Http\Request;
 
 class DistrictController extends Controller
@@ -11,8 +13,11 @@ class DistrictController extends Controller
      */
     public function index()
     {
-        //
+        $districts = District::all();
+        return view('pages.nav.bookings_day', compact('districts'));
     }
+
+
 
     /**
      * Show the form for creating a new resource.
@@ -33,9 +38,12 @@ class DistrictController extends Controller
     /**
      * Display the specified resource.
      */
-    public function show(string $id)
+    public function show(Request $request)
     {
-        //
+        $districts = District::all();
+        $districtId = $request->input('district');
+        $parkings = Parking::where('district_id', $districtId)->get();
+        return view('pages.nav.bookings_day', compact('parkings', 'districts'));
     }
 
     /**

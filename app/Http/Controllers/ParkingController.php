@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Parking;
 use Illuminate\Http\Request;
 
 class ParkingController extends Controller
@@ -33,9 +34,15 @@ class ParkingController extends Controller
     /**
      * Display the specified resource.
      */
-    public function show(string $id)
+    public function show(Request $request)
     {
-        //
+        $parking = Parking::find($request->parking_id);
+
+        $num_plazas_small = $parking->park_places()->where('status', 'active')->where('size', 'small')->count();
+        $num_plazas_large = $parking->park_places()->where('status', 'active')->where('size', 'large')->count();
+        $last_mile_type = $parking->vehicles_last_mile()->value('type');
+        $last_mile_availables = $parking->vehicles_last_mile()->where('status', 'active')->count();
+        return view('pages.booking.parking_sheet', compact('parking', 'num_plazas_small', 'num_plazas_large', 'last_mile_type', 'last_mile_availables'));
     }
 
     /**
