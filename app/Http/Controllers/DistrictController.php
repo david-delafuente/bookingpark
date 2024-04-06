@@ -40,10 +40,23 @@ class DistrictController extends Controller
      */
     public function show(Request $request)
     {
-        $districts = District::all();
-        $districtId = $request->input('district');
-        $parkings = Parking::where('district_id', $districtId)->get();
-        return view('pages.nav.bookings_day', compact('parkings', 'districts'));
+
+        if (isset($request) && !is_null($request->district)) {
+            $districts = District::all();
+            $districtId = $request->input('district');
+            //$parkings = Parking::where('district_id', $districtId)->get();
+            $parkings = Parking::where('district_id', $districtId)
+                ->whereRaw('EXISTS (
+                SELECT 1
+                FROM park_places
+                WHERE park_places.parking_id = parkings.id
+                AND park_places.status = "active"
+            )')->get();
+
+            return view('pages.nav.bookings_day', compact('parkings', 'districts'));
+        } else {
+            return redirect()->route('booking_day')->with('danger', 'Elige un dsitrito');
+        }
     }
 
     /**

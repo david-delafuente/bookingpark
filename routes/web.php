@@ -32,7 +32,7 @@ Route::middleware('auth')->group(function () {
     Route::get('/comeBackBasic', [MembershipController::class, 'basic'])->name('membership_cancel');
 
     //booking by day
-    Route::get('/bookings_day', [DistrictController::class, 'index'])->name('booking_day.index');
+    Route::get('/bookings_day', [DistrictController::class, 'index'])->name('booking_day');
     //show parkins by district
     Route::post('/show_parkings', [DistrictController::class, 'show'])->name('show_parkings');
     //show parking selected

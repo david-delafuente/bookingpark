@@ -40,13 +40,13 @@
                     </div>
                     </p>
                 </div>
-
-
-
-
             </div>
-
+            <h5>Elige la fecha de tu rreserva</h5>
             <div class="parking_card parking_card_row2">
+                <input class="form-control mb-3" type="text" id="datePicker" name="fecha1" placeholder="Entrada">
+                <input class="form-control mb-3" type="text" id="datePicker" name="fecha2" placeholder="Salida">
+            </div>
+            <div class="parking_card parking_card_row3">
 
                 @if (Auth::user() && Auth::user()->membership_id == 1)
 
@@ -61,7 +61,8 @@
                         <h5>Este establecimiento dispone de vehículos para el LAST MILE</h5>
                         <p>Hazte socio y accederás a ellos de forma gratuita!
                             </strong></p>
-                        <button class="btn btn-outline-success btn-block">Reservar</button>
+                        <a href="{{ route('joinus') }}" class="btn btn-outline-primary btn-block">Hazte socio</a>
+                        <button class="btn btn-outline-success btn-block">Reservar ya</button>
                     </div>
                 @else
                     @if ($last_mile_availables > 1)
@@ -83,8 +84,7 @@
                                 Añadir LAST MILE!
                             </label>
                         </div>
-
-                        <button class="btn btn-outline-success btn-block">Reservar</button>
+                        <button class="btn btn-outline-success btn-block">Reservar ya</button>
                     </div>
                 @endif
             </div>
@@ -92,4 +92,20 @@
 
     </div>
 
+@endsection
+@section('script_page')
+    <script>
+        // Obtener la hora actual
+        const now = new Date();
+        const currentHour = now.getHours();
+
+        flatpickr("#datePicker", {
+            minDate: "today",
+            minuteIncrement: "30",
+            dateFormat: "Y-m-d",
+            defaultHour: currentHour,
+            enableTime: true,
+            time_24hr: true
+        });
+    </script>
 @endsection

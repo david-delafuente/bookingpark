@@ -27,8 +27,6 @@
                             <option value="{{ $district->id }}">{{ $district->name }}</option>
                         @endforeach
                     </select>
-                    <input class="form-control mb-3" type="text" id="datePicker" name="fecha1" placeholder="Entrada">
-                    <input class="form-control mb-3" type="text" id="datePicker" name="fecha2" placeholder="Salida">
                     <button class="btn btn-primary btn-block">Parkings disponibles</button>
                 </div>
             </div>
@@ -40,24 +38,4 @@
         @include('layouts.partials.cards.parking_card')
     @endif
 
-@endsection
-
-
-
-
-@section('script_page')
-    <script>
-        // Obtener la hora actual
-        const now = new Date();
-        const currentHour = now.getHours();
-
-        flatpickr("#datePicker", {
-            minDate: "today",
-            minuteIncrement: "30",
-            dateFormat: "Y-m-d",
-            defaultHour: currentHour,
-            enableTime: true,
-            time_24hr: true
-        });
-    </script>
 @endsection
