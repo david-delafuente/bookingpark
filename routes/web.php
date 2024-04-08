@@ -26,6 +26,8 @@ Route::middleware('auth')->group(function () {
     Route::get('/welcome', [UserController::class, 'index'])->name('welcome');
     //user profile
     Route::get('/profile', [UserController::class, 'show_profile'])->name('profile');
+    Route::get('/cancel_booking/{booking_id}', [BookingController::class, 'cancel_booking'])->name('cancel_booking');
+
     //become to Premium
     Route::view('/joinus', 'pages/nav/joinus')->name('joinus');
     Route::post('/joinus', [MembershipController::class, 'premium']);

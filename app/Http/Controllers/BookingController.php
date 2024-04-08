@@ -50,6 +50,28 @@ class BookingController extends Controller
             }
         }
     }
+
+    public function cancel_booking($booking_id)
+    {
+        $booking = Booking::find($booking_id);
+
+        if ($booking) {
+            $parkPlace = $booking->park_place;
+            $booking->delete();
+
+            if ($booking) {
+                $parkPlace->status = 'active';
+                $parkPlace->save();
+            }
+            return redirect()->route('profile');
+        } else {
+            return redirect()->route('profile')->with('danger', 'La reserva no pudo ser cancelada.');
+        }
+    }
+
+
+
+
     /**
      * Display a listing of the resource.
      */

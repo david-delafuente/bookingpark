@@ -60,9 +60,8 @@
                                 </p>
                                 <p><strong>Desde:</strong> {{ $booking->check_in }}</p>
                                 <p><strong>Hasta:</strong> {{ $booking->check_out }}</p>
-
-
-                                <!-- Otros detalles del vehículo -->
+                                <a href="{{ route('cancel_booking', ['booking_id' => $booking->id]) }}"
+                                    class="btn btn-outline-danger">Cancelar</a>
                             </div>
                         </div>
                     @endforeach
