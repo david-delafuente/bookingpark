@@ -53,6 +53,19 @@
                 <div class="card">
 
                     <h2>Mis reservas activas</h2>
+                    @foreach ($user->bookings as $booking)
+                        <div class="card">
+                            <div class="card-body">
+                                <p class="card-title"><strong>Parking: </strong> {{ $booking->park_place->parking->name }}
+                                </p>
+                                <p><strong>Desde:</strong> {{ $booking->check_in }}</p>
+                                <p><strong>Hasta:</strong> {{ $booking->check_out }}</p>
+
+
+                                <!-- Otros detalles del vehículo -->
+                            </div>
+                        </div>
+                    @endforeach
                     {{--     @foreach ($user->reservations as $reservation)
                             <div class="card">
                                 <div class="card-body">

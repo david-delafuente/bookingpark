@@ -40,7 +40,6 @@ class DistrictController extends Controller
      */
     public function show(Request $request)
     {
-
         if (isset($request) && !is_null($request->district)) {
             $districts = District::all();
             $districtId = $request->input('district');

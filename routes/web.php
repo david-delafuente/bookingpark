@@ -5,6 +5,7 @@ use App\Http\Controllers\MembershipController;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\Auth\RegisterController;
 use App\Http\Controllers\Auth\LoginController;
+use App\Http\Controllers\BookingController;
 use App\Http\Controllers\DistrictController;
 use App\Http\Controllers\ParkingController;
 use Illuminate\Support\Facades\Route;
@@ -31,14 +32,16 @@ Route::middleware('auth')->group(function () {
     //Come back to Basic
     Route::get('/comeBackBasic', [MembershipController::class, 'basic'])->name('membership_cancel');
 
-    //booking by day
+    //booking for day
     Route::get('/bookings_day', [DistrictController::class, 'index'])->name('booking_day');
-    //show parkins by district
+    //show parkins for district
     Route::post('/show_parkings', [DistrictController::class, 'show'])->name('show_parkings');
+    Route::get('/show_parkings', [DistrictController::class, 'show'])->name('show_parkings');
     //show parking selected
     Route::post('/show_parking_data', [ParkingController::class, 'show'])->name('show_parking_data');
-
-
+    Route::get('/show_parking_data', [ParkingController::class, 'show'])->name('show_parking_data');
+    //complete booking for day
+    Route::post('/complete_booking_day', [BookingController::class, 'complete_booking_day'])->name('complete_booking_day');
 
 
 
