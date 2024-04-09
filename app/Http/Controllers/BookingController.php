@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Booking;
 use App\Models\Park_place;
 use App\Models\Parking;
+use App\Models\Vehicle_last_mile;
 use Illuminate\Http\Request;
 
 class BookingController extends Controller
@@ -15,12 +16,11 @@ class BookingController extends Controller
     public function complete_booking_day(Request $request)
     {
         $park_id = $request->parking_id;
-
+        //Server side validation
         if (isset($request) && is_null($request->size) || is_null($request->fecha1) || is_null($request->fecha2)) {
-
             return redirect()->route('show_parking_data', ['parking_id' => $park_id])->with('danger', 'Faltan datos.');
         } else {
-            //obtener plaza de parking libre en el tamaño solicitado y pasarkla a inactiva
+            //Obtain park place available and pass to inactive when it's reserved
             $parkPlace = Park_place::where('parking_id', $park_id)
                 ->where('size', $request->size)
                 ->where('status', 'active')
@@ -33,15 +33,28 @@ class BookingController extends Controller
                 return redirect()->route('show_parking_data', ['parking_id' => $park_id])->with('danger', 'No hay parkings disponibles del tamaño seleccionado');
             }
 
+            //create booking in Db without last mile
+            if ($request->last_mile) {
+                $fecha1 = $request->fecha1;
+                $fecha2 = $request->fecha2;
 
+                $vehicle = Vehicle_last_mile::where('parking_id', $park_id)
+                    ->where('status', 'active')
+                    ->first();
 
-            //crear la reserva
+                $booking_last_mile_controller = new Booking_last_mileController();
+                $booking_last_mile_controller->create_booking_last_mile($vehicle, $fecha1, $fecha2);
+            }
+
             $booking = Booking::create([
                 'user_id' => auth()->id(), // ID del usuario autenticado
                 'check_in' => $request->fecha1,
                 'check_out' => $request->fecha2,
                 'park_place_id' => $parkPlace->id,
             ]);
+
+
+
 
             if ($booking) {
                 return redirect()->route('welcome')->with('success', 'Reserva completada!');

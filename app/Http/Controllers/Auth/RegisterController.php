@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Auth;
 
 use App\Http\Controllers\Controller;
+use App\Http\Controllers\VehicleController;
 use App\Models\Membership;
 use App\Models\User;
 use Illuminate\Foundation\Support\Providers\RouteServiceProvider;
@@ -41,16 +42,24 @@ class RegisterController extends Controller
             'name' => 'required',
             'email' => 'required|email|unique:users',
             'password' => 'required|min:4',
+            'vehicle' => 'required|in:car,bike',
+            'license_plate' => 'required'
         ]);
 
         /*
         Database Insert
         */
+
         $user = User::create([
             'name' => $request->name,
             'email' => $request->email,
             'password' => Hash::make($request->password),
         ]);
+        $userId = $user->id;
+
+        $obj_vehicle = new VehicleController;
+        $obj_vehicle->create($userId, $request->vehicle, $request->license_plate);
+
 
 
         Auth::login($user);

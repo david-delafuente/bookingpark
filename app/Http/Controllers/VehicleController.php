@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Vehicle;
 use Illuminate\Http\Request;
 
 class VehicleController extends Controller
@@ -17,9 +18,26 @@ class VehicleController extends Controller
     /**
      * Show the form for creating a new resource.
      */
-    public function create()
+    public function create($user_id, $vehicle, $license_plate)
     {
-        //
+        Vehicle::create([
+            'user_id' => $user_id,
+            'type' => $vehicle,
+            'license_plate' => $license_plate
+        ]);
+        return true;
+    }
+    /**
+     * Show the form for creating a new resource.
+     */
+    public function create_form(Request $request)
+    {
+        Vehicle::create([
+            'user_id' => $request->user_id,
+            'type' => $request->vehicle,
+            'license_plate' => $request->license_plate
+        ]);
+        return redirect()->route('profile');
     }
 
     /**
@@ -59,6 +77,15 @@ class VehicleController extends Controller
      */
     public function destroy(string $id)
     {
-        //
+        $vehicle = Vehicle::find($id);
+
+        if ($vehicle) {
+
+            $vehicle->delete();
+
+            return redirect()->route('profile');
+        } else {
+            return redirect()->route('profile')->with('danger', 'El vehículo no ha podido eliminarse.');
+        }
     }
 }

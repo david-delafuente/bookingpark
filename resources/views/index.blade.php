@@ -6,15 +6,22 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>BookingPark</title>
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
-    <!-- Agregar aquí tus estilos personalizados -->
+    <!-- Goooogle Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=EB+Garamond&family=Reem+Kufi+Fun:wght@400..700&family=Ysabeau+Infant:wght@100;200&display=swap"
+        rel="stylesheet">
     <style>
-        /* Estilos personalizados */
         body {
             font-family: Arial, sans-serif;
             background-color: #f8f9fa;
             margin: 0;
             padding: 0;
+            font-family: "Reem Kufi Fun", sans-serif;
         }
+
+
 
         .container {
             max-width: 800px;
@@ -47,7 +54,7 @@
     <div class="container">
         <img src="{{ asset('images/logo_2.png') }}" alt="Logo de tu empresa" class="logo">
         <h1>Bienvenido/a </h1>
-        <h5>a la plataforma líder en gestión de reservas de parking online</h5>
+        <p>a la plataforma líder en gestión de reservas de parking online</p>
         <div class="row">
             <div class="col-md-6">
                 <a href="{{ route('login') }}" class="btn btn-primary btn-block">Entrar</a>

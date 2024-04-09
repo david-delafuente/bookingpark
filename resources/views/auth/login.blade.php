@@ -1,33 +1,3 @@
-{{-- <h2> LogIn </h2>
-@if ($errors->any())
-    <div>
-        <div>Something went wrong!</div>
-        <ul>
-            @foreach ($errors->all() as $error)
-                <li>{{ $error }}</li>
-            @endforeach
-        </ul>
-    </div>
-@endif
-<form action="/login" method="POST">
-    @csrf
-    <div>
-        <label for="name">Name</label>
-        <input type="text" id="name" name="name" value="{{ old('name') }}" autofocus>
-    </div>
-    <div>
-        <label for="email">Email</label>
-        <input type="email" id="email" name="email" value="{{ old('email') }}">
-    </div>
-    <div>
-        <label for="password">Password</label>
-        <input type="password" id="password" name="password" value="{{ old('password') }}">
-    </div>
-    <div>
-        <button>Register</button>
-    </div>
-</form> --}}
-
 <!DOCTYPE html>
 <html lang="es">
 
@@ -36,7 +6,12 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Iniciar Sesión - Tu Empresa</title>
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
-    <!-- Agregar aquí tus estilos personalizados -->
+    <!-- Goooogle Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=EB+Garamond&family=Reem+Kufi+Fun:wght@400..700&family=Ysabeau+Infant:wght@100;200&display=swap"
+        rel="stylesheet">
     <style>
         /* Estilos personalizados */
         body {
@@ -44,6 +19,10 @@
             background-color: #f8f9fa;
             margin: 0;
             padding: 0;
+        }
+
+        .font {
+            font-family: "Reem Kufi Fun", sans-serif;
         }
 
         .container {
@@ -73,7 +52,7 @@
 
 <body>
     <div class="container">
-        <h2 class="mb-4">Iniciar Sesión</h2>
+        <h2 class="mb-4 font">Iniciar Sesión</h2>
         <!-- Formulario de inicio de sesión -->
         <form action="{{ route('login') }}" method="POST">
             @csrf
@@ -85,7 +64,7 @@
                 <label for="password">Contraseña</label>
                 <input type="password" id="password" name="password" class="form-control" required>
             </div>
-            <button type="submit" class="btn btn-primary btn-block">Acceder</button>
+            <button type="submit" class="btn btn-primary btn-block font">Acceder</button>
         </form>
         <p class="mt-3 text-center">¿No tienes una cuenta? <a href="{{ route('register') }}">Regístrate aquí</a></p>
     </div>

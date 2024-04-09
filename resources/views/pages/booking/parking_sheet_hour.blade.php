@@ -104,9 +104,9 @@
         flatpickr("#datePicker", {
             minDate: "today",
             minuteIncrement: "30",
-            dateFormat: "Y-m-d",
+            dateFormat: "Y-m-d H:i",
             defaultHour: currentHour,
-            enableTime: false,
+            enableTime: true,
             time_24hr: true
         });
     </script>

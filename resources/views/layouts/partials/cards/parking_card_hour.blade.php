@@ -1,6 +1,6 @@
 <div class="card_container">
     @foreach ($parkings as $parking)
-        <form class="parking_card_page" action="{{ route('show_parking_data') }}" method="post">
+        <form class="parking_card_page" action="{{ route('show_parking_data_hour') }}" method="post">
             @csrf
             <div>
                 <input type="hidden" name="parking_id" value="{{ $parking->id }}">

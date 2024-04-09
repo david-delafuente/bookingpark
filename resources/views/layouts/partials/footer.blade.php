@@ -17,16 +17,16 @@
         </div>
 
         <div class="footer_text_copy">
-            <p>Copyright @ 2024 - Dev by David de la Fuente</p>
+            <p class="font">Copyright @ 2024 - Dev by David de la Fuente</p>
         </div>
 
         <div class="footer_text_links">
             <div class="link_legal">
-                <a href="#">Información legal</a>
+                <a class="font" href="#">Información legal</a>
             </div>
             <div>|</div>
             <div class="link_privacity">
-                <a href="#">Política de privacidad</a>
+                <a class="font" href="#">Política de privacidad</a>
             </div>
         </div>
 

@@ -5,14 +5,11 @@
     <a href="{{ route('welcome') }}" class="btn_user_profile">
         <ion-icon size="large" name="arrow-back-outline"></ion-icon>
     </a>
-
-    <div class="main-content">
+    @include('layouts.partials.cards.day_price')
+    <div class="col-md-8 main-content">
         <div class=" col-md-8 row1 ">
-            <!-- Contenido principal -->
             <div class="col-md-9">
                 @include('layouts.partials.message')
-                <!-- Aquí va el contenido principal -->
-                <h2>Reserva por días</h2>
             </div>
         </div>
     </div>
@@ -27,13 +24,11 @@
                             <option value="{{ $district->id }}">{{ $district->name }}</option>
                         @endforeach
                     </select>
-                    <button class="btn btn-primary btn-block">Parkings disponibles</button>
+                    <button class="btn btn-primary btn-block font">Parkings disponibles</button>
                 </div>
             </div>
         </div>
     </form>
-
-
     @if (isset($parkings))
         @include('layouts.partials.cards.parking_card')
     @endif

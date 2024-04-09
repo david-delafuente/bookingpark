@@ -8,7 +8,7 @@
         </div>
         <div class="col-md-6 joinus_item2">
             <div class="container">
-                <h5 class="mb-4 text-center">¡Únete y disfruta de beneficios exclusivos!</h5>
+                <h5 class="mb-4 text-center font">¡Únete y disfruta de beneficios exclusivos!</h5>
 
                 <!-- Formulario de registro -->
                 <form class="example" action="{{ route('joinus') }}" method="POST">

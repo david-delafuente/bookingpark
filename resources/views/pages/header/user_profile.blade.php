@@ -8,78 +8,122 @@
     </a>
     <div class="user_profile_container">
         @include('layouts.partials.message')
-        <div class="back_btn_container">
-            <h2>Mi perfil</h2>
-        </div>
+
 
         <div class="col-md-6 user_block">
-            <div class="card">
+            <div class="user_card">
                 <div class="card-body">
                     <p><strong>Nombre:</strong> {{ auth()->user()->name }}</p>
                     <p><strong>Email:</strong> {{ auth()->user()->email }}</p>
                     <p><strong>Tipo de membresía:</strong>
                         @if (auth()->user()->membership_id == 1)
                             Básica
+                            <a href="{{ route('joinus') }}" class="btn btn-outline-success">
+                                Hazte socio
+                            </a>
                         @elseif(auth()->user()->membership_id == 2)
                             Premium
+                            <a href="{{ route('membership_cancel') }}" class="btn btn-outline-danger">
+                                Cancelar membresía
+                            </a>
                         @endif
                     </p>
-
-                    <a href="{{ route('membership_cancel') }}" class="btn btn-danger">
-                        Cancelar membresía
-                    </a>
-
                 </div>
             </div>
         </div>
 
         <div class="user_list">
-            <div class="col-md-4 user_autos">
-                <div class="card">
-                    <h2>Mis vehículos</h2>
-                    @foreach ($user->vehicles as $vehicle)
-                        <div class="card">
-                            <div class="card-body">
-                                <h5 class="card-title">{{ $vehicle->type }}</h5>
-                                <p><strong>Matrícula:</strong> {{ $vehicle->license_plate }}</p>
-                                <!-- Otros detalles del vehículo -->
-                            </div>
-                        </div>
-                    @endforeach
-                </div>
-            </div>
 
-            <div class="col-md-4 user_bookings">
-                <div class="card">
-
-                    <h2>Mis reservas activas</h2>
+            <div class="col-md-6 user_bookings">
+                <div>
+                    <h2 class="user_title">Mis reservas</h2>
                     @foreach ($user->bookings as $booking)
-                        <div class="card">
-                            <div class="card-body">
-                                <p class="card-title"><strong>Parking: </strong> {{ $booking->park_place->parking->name }}
-                                </p>
-                                <p><strong>Desde:</strong> {{ $booking->check_in }}</p>
-                                <p><strong>Hasta:</strong> {{ $booking->check_out }}</p>
+                        <div class="booking_list">
+                            <div>
+                                <span class="card-title"><strong>Parking: </strong>
+                                    {{ $booking->park_place->parking->name }}
+                                </span>
+
+                                <span><strong>Entrada:</strong>
+                                    {{ \Carbon\Carbon::parse($booking->check_in)->format('d/m') }}</span>
+
+
+                            </div>
+                            <div>
+                                <span><strong>Dirección:</strong> {{ $booking->park_place->parking->adress }}</span>
+                            </div>
+                            <div>
                                 <a href="{{ route('cancel_booking', ['booking_id' => $booking->id]) }}"
                                     class="btn btn-outline-danger">Cancelar</a>
                             </div>
+
+
+
                         </div>
                     @endforeach
-                    {{--     @foreach ($user->reservations as $reservation)
-                            <div class="card">
-                                <div class="card-body">
-                                    <h5 class="card-title">{{ $reservation->parking->name }}</h5>
-                                    <p><strong>Fecha de inicio:</strong> {{ $reservation->start_date }}</p>
-                                    <p><strong>Fecha de fin:</strong> {{ $reservation->end_date }}</p>
-                                    <!-- Otros detalles de la reserva -->
-                                </div>
-                            </div>
-                        @endforeach --}}
+
                 </div>
             </div>
+            <div class="col-md-3 user_autos">
+                <div>
+                    <h2 class="user_title">Mis vehículos</h2>
+
+
+                    <div class="d-grid gap-2 user_title">
+                        <button id="showFormBtn" class="btn btn-secondary" type="button">Añadir más</button>
+                    </div>
+                    <div id="addMoreForm" style="display: none;">
+                        <div class="vehicle_card">
+                            <form action="{{ route('add_vehicle') }}" method="POST">
+                                @csrf
+                                <input type="hidden" name="user_id" value={{ auth()->user()->id }}>
+                                <div class="form-group vehicle_form">
+                                    <select name="vehicle" class="form-control">
+                                        <option value="" selected disabled>Elige tu vehículo</option>
+                                        <option value="car">Coche</option>
+                                        <option value="bike">Moto</option>
+                                    </select>
+                                </div>
+                                <div class="form-group vehicle_form">
+
+                                    <input type="license_plate" name="license_plate" class="form-control"
+                                        placeholder="Matrícula" required>
+                                </div>
+                                <button class="btn btn-outline-primary" type="submit">Añadir</button>
+                            </form>
+                        </div>
+                    </div>
+
+                    @foreach ($user->vehicles as $vehicle)
+                        <div class="vehicle_list">
+                            <div>
+                                <span class="card-title"><strong>Tipo: </strong>{{ $vehicle->type }}</span>
+                                <span><strong>Matrícula: </strong> {{ $vehicle->license_plate }}</span>
+                            </div>
+                            <div>
+                                <a href="{{ route('remove_vehicle', ['vehicle_id' => $vehicle->id]) }}"
+                                    class="btn btn-outline-danger">Eliminar</a>
+                            </div>
+                        </div>
+                    @endforeach
+                </div>
+            </div>
+
         </div>
 
     </div>
 
 
+@endsection
+@section('script_page')
+    <script>
+        document.getElementById('showFormBtn').addEventListener('click', function() {
+            var form = document.getElementById('addMoreForm');
+            if (form.style.display === 'none') {
+                form.style.display = 'block';
+            } else {
+                form.style.display = 'none';
+            }
+        });
+    </script>
 @endsection

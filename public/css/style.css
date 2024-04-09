@@ -9,6 +9,10 @@
         min-height: 100vh;
     }
 
+    .font {
+        font-family: "Reem Kufi Fun", sans-serif;
+    }
+
     main {
         flex: 1;
     }
@@ -265,8 +269,52 @@
         justify-content: center;
         align-items: center;
         flex-wrap: wrap;
-
         border-radius: 10px;
+    }
+
+    .prices {
+        margin: auto;
+        display: flex;
+        flex-direction: row;
+        text-align: center;
+        gap: 40px;
+        width: 500px;
+    }
+
+    .price1,
+    .price2 {
+        color: white;
+        font-family: "Reem Kufi Fun", sans-serif;
+        background: linear-gradient(to right, #b3e0ff, #0077b3);
+    }
+
+    .price1 img,
+    .price2 img {
+        width: 75px;
+        border-radius: 20px;
+    }
+
+    .prices_card {
+        width: 100%;
+        padding: 10px;
+        box-sizing: border-box;
+        border: none;
+        border-radius: 10px;
+        box-shadow: 3px 3px 5px rgba(0, 0, 0, 0.2);
+    }
+
+    .parking_card_page {
+        overflow: auto;
+        color: rgba(128, 128, 128, 0.785);
+        width: 275px;
+        height: 240px;
+        padding: 10px;
+        margin: 5px;
+        box-sizing: border-box;
+        border: none;
+        border-radius: 10px;
+        background: #b1e5ff85;
+        box-shadow: 3px 3px 5px rgba(6, 126, 186, 0.2);
     }
 
     .parking_card {
@@ -277,7 +325,6 @@
         border: solid 1px rgba(128, 128, 128, 0.26);
         border-radius: 10px;
         box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.1);
-        /* offsetX, offsetY, blurRadius, color */
     }
 
     /**/
@@ -352,4 +399,59 @@
 
     .booking_card label {
         padding: 10px;
+    }
+
+    /**/
+    /* User profile page */
+    /**/
+
+    .user_title {
+        font-family: "Reem Kufi Fun", sans-serif;
+        margin-bottom: 10px;
+
+    }
+
+    .user_card {
+        width: 100%;
+        padding: 10px;
+        margin: 5px;
+        box-sizing: border-box;
+        border: solid 1px rgba(128, 128, 128, 0.26);
+        border-radius: 10px;
+        box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.1);
+        /* offsetX, offsetY, blurRadius, color */
+    }
+
+    .vehicle_card {
+        width: 100%;
+        padding: 10px;
+        margin: 15px 0 15px 0;
+        box-sizing: border-box;
+        border: solid 1px rgba(128, 128, 128, 0.26);
+        border-radius: 10px;
+        box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.1);
+        /* offsetX, offsetY, blurRadius, color */
+    }
+
+    .vehicle_form {
+        margin: 10px;
+    }
+
+    .vehicle_list {
+        color: grey;
+        width: 95%;
+        margin: 10px;
+        display: flex;
+        flex-direction: row;
+        justify-content: space-between;
+
+    }
+
+    .booking_list {
+        color: grey;
+        width: 95%;
+        margin: 10px;
+        display: flex;
+        flex-direction: row;
+        justify-content: space-between;
     }
