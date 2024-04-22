@@ -21,8 +21,6 @@
             font-family: "Reem Kufi Fun", sans-serif;
         }
 
-
-
         .container {
             max-width: 800px;
             margin: 100px auto;
@@ -65,11 +63,10 @@
         </div>
     </div>
 
-    <!-- JavaScript opcional (para funcionalidades adicionales) -->
+    <!-- JavaScript -->
     <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.3/dist/umd/popper.min.js"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
-    <!-- Agregar aquí tus scripts personalizados -->
 </body>
 
 </html>

@@ -2,13 +2,12 @@
 @section('title', 'Perfil de usuario')
 
 @section('content')
-    <!-- Contenido principal -->
+    <!-- Main content -->
     <a href="{{ route('welcome') }}" class="btn_user_profile">
         <ion-icon size="large" name="arrow-back-outline"></ion-icon>
     </a>
     <div class="user_profile_container">
         @include('layouts.partials.message')
-
 
         <div class="col-md-6 user_block">
             <div class="user_card">
@@ -47,7 +46,6 @@
                                 <span><strong>Entrada:</strong>
                                     {{ \Carbon\Carbon::parse($booking->check_in)->format('d/m') }}</span>
 
-
                             </div>
                             <div>
                                 <span><strong>Dirección:</strong> {{ $booking->park_place->parking->adress }}</span>
@@ -57,8 +55,6 @@
                                     class="btn btn-outline-danger">Cancelar</a>
                             </div>
 
-
-
                         </div>
                     @endforeach
 
@@ -67,7 +63,6 @@
             <div class="col-md-3 user_autos">
                 <div>
                     <h2 class="user_title">Mis vehículos</h2>
-
 
                     <div class="d-grid gap-2 user_title">
                         <button id="showFormBtn" class="btn btn-secondary" type="button">Añadir más</button>
@@ -108,15 +103,13 @@
                     @endforeach
                 </div>
             </div>
-
         </div>
-
     </div>
-
 
 @endsection
 @section('script_page')
     <script>
+        //Show form to create vehicle 
         document.getElementById('showFormBtn').addEventListener('click', function() {
             var form = document.getElementById('addMoreForm');
             if (form.style.display === 'none') {

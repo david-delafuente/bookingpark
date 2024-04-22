@@ -97,7 +97,7 @@
 @endsection
 @section('script_page')
     <script>
-        // Obtener la hora actual
+        // Get current hour
         const now = new Date();
         const currentHour = now.getHours();
 

@@ -4,11 +4,8 @@ namespace App\Http\Controllers\Auth;
 
 use App\Http\Controllers\Controller;
 use App\Http\Controllers\VehicleController;
-use App\Models\Membership;
 use App\Models\User;
-use Illuminate\Foundation\Support\Providers\RouteServiceProvider;
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
 
 class RegisterController extends Controller
@@ -34,10 +31,7 @@ class RegisterController extends Controller
      */
     public function store(Request $request)
     {
-
-        /* 
-        Validation
-        */
+        //Validation
         $request->validate([
             'name' => 'required',
             'email' => 'required|email|unique:users',
@@ -46,23 +40,18 @@ class RegisterController extends Controller
             'license_plate' => 'required'
         ]);
 
-        /*
-        Database Insert
-        */
-
+        //Create user in DB
         $user = User::create([
             'name' => $request->name,
             'email' => $request->email,
             'password' => Hash::make($request->password),
         ]);
+        //Recover user_id created 
         $userId = $user->id;
 
+        //Create vehicle in Register step
         $obj_vehicle = new VehicleController;
         $obj_vehicle->create($userId, $request->vehicle, $request->license_plate);
-
-
-
-        Auth::login($user);
 
         return redirect('login');
     }

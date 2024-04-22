@@ -12,7 +12,7 @@ class Parking extends Model
     use HasFactory;
     protected $guarded = [];
 
-    //Realtions
+    //Relations
 
     public function park_places(): HasMany
     {

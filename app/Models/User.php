@@ -47,7 +47,7 @@ class User extends Authenticatable
         ];
     }
 
-    //Realtions
+    //Relations
 
     public function vehicles(): HasMany
     {

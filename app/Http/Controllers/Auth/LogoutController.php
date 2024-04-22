@@ -62,13 +62,14 @@ class LogoutController extends Controller
      */
     public function destroy(Request $request): RedirectResponse
     {
-
+        //Laravel recommendations to make a Logout correctly, searched on web
+        //Logout the current user
         Auth::logout();
-
+        //Invalidate the session
         $request->session()->invalidate();
-
+        //Regenerate the session token
         $request->session()->regenerateToken();
-
+        //Redirect to the homepage
         return redirect('/');
     }
 }

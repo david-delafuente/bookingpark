@@ -54,7 +54,7 @@
     </style>
     <div class="container">
         <h2 class="mb-4 font">Nuevo usuario</h2>
-        <!-- Formulario de registro -->
+        <!-- Form -->
         <form action="{{ route('register') }}" method="POST">
             @csrf
             <div class="form-group">
@@ -86,7 +86,7 @@
         <p class="mt-3 text-center">¿Ya tienes una cuenta? <a href="{{ route('login') }}">Inicia sesión aquí</a></p>
     </div>
 
-    <!-- JavaScript opcional (para funcionalidades adicionales) -->
+    <!-- JavaScript -->
     <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.8/dist/umd/popper.min.js"
         integrity="sha384-I7E8VVD/ismYTF4hNIPjVp/Zjvgyol6VFvRkX/vR+Vc4jQkC+hVqc2pM8ODewa9r" crossorigin="anonymous">
     </script>

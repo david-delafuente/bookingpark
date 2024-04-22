@@ -3,8 +3,7 @@
 
 @section('content')
     <div class="main-content">
-        <!-- Contenido principal -->
-
+        <!-- Main content -->
         <div class="welcome_container">
             @include('layouts.partials.message')
 
@@ -50,39 +49,9 @@
 
         </div>
     </div>
-    <script>
-        // Obtener la hora actual
-        const now = new Date();
-        const currentHour = now.getHours();
 
-        flatpickr("#datePicker", {
-            minDate: "today",
-            minuteIncrement: "30",
-            dateFormat: "Y-m-d H:i",
-            defaultHour: currentHour,
-            enableTime: true,
-            time_24hr: true
-        });
-    </script>
 @endsection
 
 @section('footer')
     @include('layouts.partials.footer')
-@endsection
-
-@section('script_page')
-    <script>
-        // Obtener la hora actual
-        const now = new Date();
-        const currentHour = now.getHours();
-
-        flatpickr("#datePicker", {
-            minDate: "today",
-            minuteIncrement: "30",
-            dateFormat: "Y-m-d H:i",
-            defaultHour: currentHour,
-            enableTime: true,
-            time_24hr: true
-        });
-    </script>
 @endsection

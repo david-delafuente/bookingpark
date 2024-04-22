@@ -11,6 +11,8 @@ class Membership extends Model
     use HasFactory;
     protected $guarded = [];
 
+    //Relations
+
     public function users(): HasMany
     {
         return $this->hasMany(User::class);

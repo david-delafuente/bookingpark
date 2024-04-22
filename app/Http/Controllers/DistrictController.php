@@ -9,7 +9,7 @@ use Illuminate\Http\Request;
 class DistrictController extends Controller
 {
     /**
-     * Display a listing of the resource.
+     * Display a listing of districts in day page
      */
     public function index()
     {
@@ -17,7 +17,7 @@ class DistrictController extends Controller
         return view('pages.nav.bookings_day', compact('districts'));
     }
     /**
-     * Display a listing of the resource.
+     * Display a listing of districts in hour page
      */
     public function index2()
     {
@@ -25,34 +25,15 @@ class DistrictController extends Controller
         return view('pages.nav.bookings_hour', compact('districts'));
     }
 
-
-
-
     /**
-     * Show the form for creating a new resource.
-     */
-    public function create()
-    {
-        //
-    }
-
-    /**
-     * Store a newly created resource in storage.
-     */
-    public function store(Request $request)
-    {
-        //
-    }
-
-    /**
-     * Display the specified resource.
+     * Display parkings in disctricts selected in day page
      */
     public function show(Request $request)
     {
         if (isset($request) && !is_null($request->district)) {
             $districts = District::all();
             $districtId = $request->input('district');
-            //$parkings = Parking::where('district_id', $districtId)->get();
+
             $parkings = Parking::where('district_id', $districtId)
                 ->whereRaw('EXISTS (
                 SELECT 1
@@ -66,47 +47,27 @@ class DistrictController extends Controller
             return redirect()->route('booking_day')->with('danger', 'Elige un dsitrito');
         }
     }
+
+    /**
+     * Display parkings in disctricts selected in hour page
+     */
     public function show2(Request $request)
     {
         if (isset($request) && !is_null($request->district)) {
             $districts = District::all();
-            $districtId = $request->input('district');
-            //$parkings = Parking::where('district_id', $districtId)->get();
+            //This is another way to access the form variable
+            $districtId = $request->district;
+
+            //Another method using Eloquent of Laravel to make a query to DB
             $parkings = Parking::where('district_id', $districtId)
-                ->whereRaw('EXISTS (
-                SELECT 1
-                FROM park_places
-                WHERE park_places.parking_id = parkings.id
-                AND park_places.status = "active"
-            )')->get();
+                ->whereHas('park_places', function ($query) {
+                    $query->where('status', 'active');
+                })
+                ->get();
 
             return view('pages.nav.bookings_hour', compact('parkings', 'districts'));
         } else {
             return redirect()->route('booking_hour')->with('danger', 'Elige un dsitrito');
         }
-    }
-
-    /**
-     * Show the form for editing the specified resource.
-     */
-    public function edit(string $id)
-    {
-        //
-    }
-
-    /**
-     * Update the specified resource in storage.
-     */
-    public function update(Request $request, string $id)
-    {
-        //
-    }
-
-    /**
-     * Remove the specified resource from storage.
-     */
-    public function destroy(string $id)
-    {
-        //
     }
 }

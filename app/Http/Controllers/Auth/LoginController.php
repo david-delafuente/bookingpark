@@ -12,31 +12,27 @@ class LoginController extends Controller
 
     public function login(Request $request)
     {
-        // Validar los datos del formulario
+        // Vaalidation
         $request->validate([
             'email' => 'required|email',
             'password' => 'required',
         ]);
 
-        // Intentar encontrar un usuario con las credenciales proporcionadas
+        // Find matches
         $user = User::where('email', $request->email)->first();
 
-        // Si no se encuentra ningún usuario o la contraseña no coincide, redirigir con un mensaje de error
         if (!$user || !password_verify($request->password, $user->password)) {
             return redirect()->back()->withErrors(['error' => 'Credenciales incorrectas.']);
         }
 
-        // Iniciar sesión si las credenciales son válidas
+        // Start session
         Auth::login($user);
-
-        // Redirigir a la página de inicio después del inicio de sesión exitoso
         return redirect()->route('welcome');
     }
+
     /**
      * Display a listing of the resource.
      */
-
-
     public function index()
     {
         return view('auth.login');

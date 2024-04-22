@@ -11,7 +11,7 @@ class District extends Model
     use HasFactory;
     protected $guarded = [];
 
-    //Realtions
+    //Relations
 
     public function parkings(): HasMany
     {

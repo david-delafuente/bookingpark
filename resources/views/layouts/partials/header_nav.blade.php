@@ -6,6 +6,8 @@
       <div class="container-fluid d-flex justify-content-between align-items-center">
           <ul class="header_nav">
               <li><a class="header_nav_title font" href="{{ route('welcome') }}">Inicio</a></li>
+              <li><a class="header_nav_title font" href="{{ route('contact') }}">Contacto</a></li>
+              <li class=""><a class="header_nav_title font" href="{{ route('joinus') }}">Hazte socio</a></li>
               <li class="dropdown">
                   <a class="dropdown-toggle font" href="#" role="button" id="dropdownMenuLink"
                       data-bs-toggle="dropdown" aria-expanded="false">
@@ -16,12 +18,11 @@
                       <li><a class="dropdown-item font" href="{{ route('booking_hour') }}">Por horas</a></li>
                   </ul>
               </li>
-              <li class=""><a class="header_nav_title font" href="{{ route('joinus') }}">Hazte socio</a></li>
           </ul>
 
           <!-- Logout button -->
           @auth
-              <div class="header_profile">
+              <div class="header_profile ">
                   <li class="dropdown-toggle list-unstyled font" data-bs-toggle="dropdown" aria-expanded="false">
                       {{ auth()->user()->name }}
                   </li>

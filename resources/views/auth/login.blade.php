@@ -13,7 +13,6 @@
         href="https://fonts.googleapis.com/css2?family=EB+Garamond&family=Reem+Kufi+Fun:wght@400..700&family=Ysabeau+Infant:wght@100;200&display=swap"
         rel="stylesheet">
     <style>
-        /* Estilos personalizados */
         body {
             font-family: Arial, sans-serif;
             background-color: #f8f9fa;
@@ -53,7 +52,7 @@
 <body>
     <div class="container">
         <h2 class="mb-4 font">Iniciar Sesión</h2>
-        <!-- Formulario de inicio de sesión -->
+        <!-- Form -->
         <form action="{{ route('login') }}" method="POST">
             @csrf
             <div class="form-group">
@@ -69,11 +68,11 @@
         <p class="mt-3 text-center">¿No tienes una cuenta? <a href="{{ route('register') }}">Regístrate aquí</a></p>
     </div>
 
-    <!-- JavaScript opcional (para funcionalidades adicionales) -->
+    <!-- JavaScript  -->
     <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.3/dist/umd/popper.min.js"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
-    <!-- Agregar aquí tus scripts personalizados -->
+
 </body>
 
 </html>

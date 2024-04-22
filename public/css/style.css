@@ -67,7 +67,6 @@
         flex-direction: row;
         list-style-type: none;
         margin: 0;
-
     }
 
     .header_nav_title {
@@ -96,7 +95,6 @@
 
     .header_nav li:hover::after {
         transform: scaleX(1);
-        /* Al pasar el ratón, la línea se expande horizontalmente */
     }
 
     /**/
@@ -259,7 +257,6 @@
     /* Bookings day page */
     /**/
 
-
     .card_container {
         margin: auto;
         width: 75%;
@@ -338,7 +335,6 @@
         flex-direction: column;
         margin-top: 65px;
         margin: auto;
-
     }
 
     .general {
@@ -365,7 +361,6 @@
         color: rgb(133, 133, 133);
         display: flex;
         flex-direction: row;
-
     }
 
     .parking_card_block1 {
@@ -408,7 +403,6 @@
     .user_title {
         font-family: "Reem Kufi Fun", sans-serif;
         margin-bottom: 10px;
-
     }
 
     .user_card {
@@ -419,7 +413,6 @@
         border: solid 1px rgba(128, 128, 128, 0.26);
         border-radius: 10px;
         box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.1);
-        /* offsetX, offsetY, blurRadius, color */
     }
 
     .vehicle_card {
@@ -430,7 +423,6 @@
         border: solid 1px rgba(128, 128, 128, 0.26);
         border-radius: 10px;
         box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.1);
-        /* offsetX, offsetY, blurRadius, color */
     }
 
     .vehicle_form {
@@ -444,7 +436,6 @@
         display: flex;
         flex-direction: row;
         justify-content: space-between;
-
     }
 
     .booking_list {
@@ -454,4 +445,16 @@
         display: flex;
         flex-direction: row;
         justify-content: space-between;
+    }
+
+    /**/
+    /* Contact page */
+    /**/
+
+    .contact_img img {
+        border-radius: 10px;
+    }
+
+    .contact button {
+        margin-top: 10px;
     }

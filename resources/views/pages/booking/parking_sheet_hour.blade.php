@@ -6,7 +6,7 @@
         <ion-icon size="large" name="arrow-back-outline"></ion-icon>
     </a>
     <div class="parking_sheet_container">
-        <form action="{{ route('complete_booking_day') }}" method="post">
+        <form action="{{ route('complete_booking_hour') }}" method="post">
             @csrf
             @include('layouts.partials.message')
             <input type="hidden" name="parking_id" value={{ $parking->id }}>
@@ -43,7 +43,7 @@
                         </p>
                     </div>
                 </div>
-                <h5>Elige la fecha de tu reserva</h5>
+                <h5>Elige las horas aproximadas de tu reserva</h5>
                 <div class="parking_card parking_card_row2">
                     <input class="form-control mb-3" type="text" id="datePicker" name="fecha1" placeholder="Entrada">
                     <input class="form-control mb-3" type="text" id="datePicker" name="fecha2" placeholder="Salida">
@@ -97,7 +97,7 @@
 @endsection
 @section('script_page')
     <script>
-        // Obtener la hora actual
+        // Get current hour
         const now = new Date();
         const currentHour = now.getHours();
 
