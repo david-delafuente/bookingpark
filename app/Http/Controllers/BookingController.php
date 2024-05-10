@@ -32,6 +32,14 @@ class BookingController extends Controller
                 return redirect()->route('show_parking_data', ['parking_id' => $park_id])->with('danger', 'No hay parkings disponibles del tamaño seleccionado');
             }
 
+            $booking = Booking::create([
+                'user_id' => auth()->id(),
+                'check_in' => $request->fecha1,
+                'check_out' => $request->fecha2,
+                'park_place_id' => $parkPlace->id,
+            ]);
+
+            $newBookingId = $booking->id;
             //create booking in Db with last mile
             if ($request->last_mile) {
                 $fecha1 = $request->fecha1;
@@ -42,15 +50,8 @@ class BookingController extends Controller
                     ->first();
 
                 $booking_last_mile_controller = new Booking_last_mileController();
-                $booking_last_mile_controller->create_booking_last_mile($vehicle, $fecha1, $fecha2);
+                $booking_last_mile_controller->create_booking_last_mile($vehicle, $fecha1, $fecha2, $newBookingId);
             }
-
-            $booking = Booking::create([
-                'user_id' => auth()->id(),
-                'check_in' => $request->fecha1,
-                'check_out' => $request->fecha2,
-                'park_place_id' => $parkPlace->id,
-            ]);
 
             if ($booking) {
                 return redirect()->route('welcome')->with('success', 'Reserva completada!');
@@ -86,6 +87,15 @@ class BookingController extends Controller
                 return redirect()->route('show_parking_data_hour', ['parking_id' => $park_id])->with('danger', 'No hay parkings disponibles del tamaño seleccionado');
             }
 
+
+            $booking = Booking::create([
+                'user_id' => auth()->id(),
+                'check_in' => $request->fecha1,
+                'check_out' => $request->fecha2,
+                'park_place_id' => $parkPlace->id,
+            ]);
+
+            $newBookingId = $booking->id;
             //create booking in DB with last mile
             if ($request->last_mile) {
 
@@ -97,15 +107,9 @@ class BookingController extends Controller
                     ->first();
 
                 $booking_last_mile_controller = new Booking_last_mileController();
-                $booking_last_mile_controller->create_booking_last_mile($vehicle, $fecha1, $fecha2);
+                $booking_last_mile_controller->create_booking_last_mile($vehicle, $fecha1, $fecha2, $newBookingId);
             }
 
-            $booking = Booking::create([
-                'user_id' => auth()->id(),
-                'check_in' => $request->fecha1,
-                'check_out' => $request->fecha2,
-                'park_place_id' => $parkPlace->id,
-            ]);
 
             if ($booking) {
                 return redirect()->route('welcome')->with('success', 'Reserva completada!');

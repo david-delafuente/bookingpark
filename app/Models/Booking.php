@@ -22,4 +22,9 @@ class Booking extends Model
     {
         return $this->belongsTo(Park_place::class);
     }
+
+    public function bookingLastMile()
+    {
+        return $this->hasOne(Booking_last_mile::class)->withDefault();
+    }
 }

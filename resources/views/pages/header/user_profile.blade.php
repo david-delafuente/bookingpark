@@ -50,6 +50,13 @@
                             <div>
                                 <span><strong>Dirección:</strong> {{ $booking->park_place->parking->adress }}</span>
                             </div>
+
+                            <!-- If the booking has associated LastMile -->
+                            @if ($booking->bookingLastMile()->exists())
+                                <div>
+                                    <p>¡Tienes un Last Mile asociado!</>
+                                </div>
+                            @endif
                             <div>
                                 <a href="{{ route('cancel_booking', ['booking_id' => $booking->id]) }}"
                                     class="btn btn-outline-danger">Cancelar</a>
